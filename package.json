@@ -8,14 +8,20 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "node --test",
-    "proof:verify": "node scripts/verify-existing-transaction.mjs",
-    "demo:devnet": "node scripts/execute-devnet-payment.mjs",
-    "demo:address": "node scripts/execute-devnet-payment.mjs --print-address",
-    "check": "npm test"
+    "test": "tsx --test test/**/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "proof:verify": "tsx scripts/verify-existing-transaction.ts",
+    "demo:devnet": "tsx scripts/execute-devnet-payment.ts",
+    "demo:address": "tsx scripts/execute-devnet-payment.ts --print-address",
+    "check": "npm run typecheck && npm test"
   },
   "dependencies": {
     "@solana/spl-token": "0.4.9",
     "@solana/web3.js": "1.95.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "4.23.13",
+    "typescript": "5.9.2"
   }
 }

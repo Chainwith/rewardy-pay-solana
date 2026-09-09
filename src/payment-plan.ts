@@ -1,13 +1,33 @@
 const ATTEMPT_ID = /^[a-zA-Z0-9][a-zA-Z0-9_-]{2,80}$/;
 
-export function createPaymentReference(attemptId) {
+export type AtomicAmount = bigint | number | string;
+
+export type PaymentSplit = {
+  paymentAmountAtomic: bigint;
+  merchantAmountAtomic: bigint;
+  feeAmountAtomic: bigint;
+};
+
+export type PaymentPlan = {
+  payer: string;
+  merchant: string;
+  feeWallet: string;
+  paymentAmountAtomic: AtomicAmount;
+  merchantAmountAtomic: AtomicAmount;
+  feeAmountAtomic: AtomicAmount;
+};
+
+export function createPaymentReference(attemptId: string): string {
   if (!ATTEMPT_ID.test(attemptId)) {
     throw new Error('Payment attempt id is invalid');
   }
   return `rewardy-pay:${attemptId}`;
 }
 
-export function calculatePaymentSplit(paymentAmountAtomic, feeBps) {
+export function calculatePaymentSplit(
+  paymentAmountAtomic: AtomicAmount,
+  feeBps: number,
+): PaymentSplit {
   const payment = BigInt(paymentAmountAtomic);
   if (payment <= 0n) {
     throw new Error('Payment amount must be positive');
@@ -24,7 +44,7 @@ export function calculatePaymentSplit(paymentAmountAtomic, feeBps) {
   };
 }
 
-export function assertPaymentPlan(plan) {
+export function assertPaymentPlan(plan: PaymentPlan): true {
   const payment = BigInt(plan.paymentAmountAtomic);
   const merchant = BigInt(plan.merchantAmountAtomic);
   const fee = BigInt(plan.feeAmountAtomic);
@@ -39,4 +59,3 @@ export function assertPaymentPlan(plan) {
   }
   return true;
 }
-

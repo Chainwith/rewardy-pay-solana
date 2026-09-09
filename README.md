@@ -7,7 +7,7 @@ merchant creates a QR payment request, the customer approves it from a wallet,
 and Solana settles the merchant amount and Rewardy fee in one verifiable
 transaction.
 
-[Architecture](docs/architecture.svg) · [Solana fit](docs/solana-fit.md) ·
+[Why Solana](#why-solana) · [Architecture](docs/architecture.svg) · [Solana fit](docs/solana-fit.md) ·
 [Payment lifecycle](docs/payment-lifecycle.svg) ·
 [Demo guide](DEMO.md) ·
 [Devnet transaction](https://explorer.solana.com/tx/3VgumguvQvi3Zf9kZ3QzqAuhmmyfqyisHQfWYSoaiYXnytpAqP1AGLnvhTw2VSrQYX2PaVGAgaMA2FAR17sjdHSV?cluster=devnet)
@@ -33,21 +33,29 @@ Expected result:
 
 ```text
 PASS Rewardy Pay Devnet proof verified
-merchant: +9.970000
-rewardy fee: +0.030000
-payer: -10.000000
+merchant: +9.97
+rewardy fee: +0.03
+payer: -10
 ```
 
-## Payment architecture
+## Why Solana
 
-```mermaid
-flowchart LR
-  M[Merchant phone\nCreate amount and QR] --> S[Rewardy payment session\nAmount + order reference]
-  S --> W[Rewardy Wallet\nReview and sign]
-  W --> T[Solana transaction\nMemo + merchant transfer + fee]
-  T --> V[Rewardy verifier\nSigner + amounts + finality]
-  V --> R[Receipt, merchant history\nand reward eligibility]
-```
+Solana is the settlement and verification layer that turns assets held in
+Rewardy Wallet into spendable value at local merchants.
+
+- **Atomic settlement:** the merchant amount and Rewardy fee execute in one
+  transaction.
+- **Wallet-native checkout:** the customer reviews and signs the payment from
+  their wallet without a card terminal.
+- **Verifiable payment state:** Rewardy checks the signer, mint, recipients,
+  exact amounts and finality before marking an order paid.
+- **Payment-grade economics:** the recorded Devnet payment used `0.000005 SOL`
+  in network fees, which supports small payments and on-chain rewards.
+
+**Solana provides the settlement rail. Rewardy provides the wallet, merchant
+acceptance, payment recovery and reward loop.**
+
+## Solana payment architecture
 
 ![Rewardy Pay architecture](docs/architecture.svg)
 
@@ -100,12 +108,12 @@ directory. Never provide a production or mainnet secret.
 
 | Area | Evaluator entry point | What it proves |
 | --- | --- | --- |
-| Payment planning | `src/payment-plan.mjs` | Exact fee arithmetic, reference validation and destination invariants |
-| Lifecycle safety | `src/payment-lifecycle.mjs` | Allowed transitions and recoverable unknown confirmations |
-| On-chain proof | `src/payment-proof.mjs` | Signer, mint, recipient, delta and finality validation |
-| Recorded proof | `scripts/verify-existing-transaction.mjs` | Read-only reproduction using a public transaction |
-| Live payment | `scripts/execute-devnet-payment.mjs` | Memo plus merchant/fee transfers in one Devnet transaction |
-| Regression tests | `test/payment-proof.test.mjs` | Exact arithmetic, proof rejection and lifecycle safety |
+| Payment planning | `src/payment-plan.ts` | Exact fee arithmetic, reference validation and destination invariants |
+| Lifecycle safety | `src/payment-lifecycle.ts` | Allowed transitions and recoverable unknown confirmations |
+| On-chain proof | `src/payment-proof.ts` | Signer, mint, recipient, delta and finality validation |
+| Recorded proof | `scripts/verify-existing-transaction.ts` | Read-only reproduction using a public transaction |
+| Live payment | `scripts/execute-devnet-payment.ts` | Memo plus merchant/fee transfers in one Devnet transaction |
+| Regression tests | `test/payment-proof.test.ts` | Exact arithmetic, proof rejection and lifecycle safety |
 
 ## What is not claimed as shipped
 

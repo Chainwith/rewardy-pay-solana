@@ -22,3 +22,8 @@
 | TMO Point and JPYSC conversion | Partnership/product concept, not production proof |
 | Mainnet payment processing | Not claimed by this Devnet submission |
 
+## Evaluation implementation
+
+The executable proof, payment-plan validation and lifecycle controls in this
+repository are written in TypeScript. `npm run typecheck` runs strict type
+checking before the test suite.

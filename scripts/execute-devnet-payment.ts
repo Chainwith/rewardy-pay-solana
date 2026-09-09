@@ -20,11 +20,12 @@ import {
   DEVNET_GENESIS,
   formatAtomic,
   verifyParsedPayment,
-} from '../src/payment-proof.mjs';
+  type ParsedPaymentTransaction,
+} from '../src/payment-proof.ts';
 import {
   calculatePaymentSplit,
   createPaymentReference,
-} from '../src/payment-plan.mjs';
+} from '../src/payment-plan.ts';
 
 const MEMO_PROGRAM_ID = new PublicKey(
   'MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr',
@@ -34,7 +35,7 @@ const rpcUrl =
 const payerFile = resolve('.local/devnet-payer.json');
 const connection = new Connection(rpcUrl, 'finalized');
 
-function loadPayer() {
+function loadPayer(): Keypair {
   const configured = process.env.SOLANA_DEVNET_PAYER_SECRET;
   if (configured) {
     const bytes = Uint8Array.from(JSON.parse(configured));
@@ -59,7 +60,7 @@ function loadPayer() {
   return payer;
 }
 
-async function ensureFunding(payer) {
+async function ensureFunding(payer: Keypair): Promise<void> {
   const minimum = 20_000_000;
   if ((await connection.getBalance(payer.publicKey, 'finalized')) >= minimum) {
     return;
@@ -71,14 +72,14 @@ async function ensureFunding(payer) {
       100_000_000,
     );
     await connection.confirmTransaction(signature, 'finalized');
-  } catch (error) {
+  } catch (error: unknown) {
     throw new Error(
       `Devnet payer ${payer.publicKey.toBase58()} needs funding. Run npm run demo:address and fund that address before retrying. Faucet response: ${error instanceof Error ? error.message : error}`,
     );
   }
 }
 
-async function main() {
+async function main(): Promise<void> {
   if ((await connection.getGenesisHash()) !== DEVNET_GENESIS) {
     throw new Error('The live payment script only runs on Solana Devnet');
   }
@@ -172,7 +173,10 @@ async function main() {
     merchantAmountAtomic: split.merchantAmountAtomic.toString(),
     feeAmountAtomic: split.feeAmountAtomic.toString(),
   };
-  const result = verifyParsedPayment(parsed, proof);
+  const result = verifyParsedPayment(
+    parsed as ParsedPaymentTransaction | null,
+    proof,
+  );
 
   process.stdout.write(
     `${JSON.stringify(
@@ -196,7 +200,7 @@ async function main() {
   );
 }
 
-main().catch(error => {
+main().catch((error: unknown) => {
   process.stderr.write(`${error instanceof Error ? error.stack : error}\n`);
   process.exitCode = 1;
 });

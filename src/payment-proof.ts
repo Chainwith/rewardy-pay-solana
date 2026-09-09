@@ -1,7 +1,51 @@
+import type { Connection } from '@solana/web3.js';
+
 export const DEVNET_GENESIS =
   'EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG';
 
-export function formatAtomic(value, decimals) {
+export type PaymentProof = {
+  signature: string;
+  mint: string;
+  decimals: number;
+  payer: string;
+  merchant: string;
+  feeWallet: string;
+  paymentAmountAtomic: string;
+  merchantAmountAtomic: string;
+  feeAmountAtomic: string;
+  memo?: string | null;
+};
+
+type TokenBalance = {
+  owner?: string;
+  mint: string;
+  uiTokenAmount?: { amount?: string };
+};
+
+type AccountKey = {
+  pubkey: { toBase58(): string };
+  signer: boolean;
+};
+
+export type ParsedPaymentTransaction = {
+  meta: {
+    err?: unknown;
+    preTokenBalances?: readonly TokenBalance[] | null;
+    postTokenBalances?: readonly TokenBalance[] | null;
+  } | null;
+  transaction: {
+    message: { accountKeys: readonly AccountKey[] };
+  };
+};
+
+export type VerifiedPayment = {
+  payerSigned: true;
+  merchantDelta: bigint;
+  feeDelta: bigint;
+  payerDelta: bigint;
+};
+
+export function formatAtomic(value: bigint, decimals: number): string {
   const negative = value < 0n;
   const absolute = negative ? -value : value;
   const divisor = 10n ** BigInt(decimals);
@@ -14,8 +58,12 @@ export function formatAtomic(value, decimals) {
   return `${negative ? '-' : ''}${rendered}`;
 }
 
-export function ownerMintDelta(transaction, owner, mint) {
-  const sum = balances =>
+export function ownerMintDelta(
+  transaction: ParsedPaymentTransaction,
+  owner: string,
+  mint: string,
+): bigint {
+  const sum = (balances: readonly TokenBalance[] | null | undefined): bigint =>
     (balances ?? [])
       .filter(balance => balance.owner === owner && balance.mint === mint)
       .reduce(
@@ -30,7 +78,10 @@ export function ownerMintDelta(transaction, owner, mint) {
   );
 }
 
-export function verifyParsedPayment(transaction, proof) {
+export function verifyParsedPayment(
+  transaction: ParsedPaymentTransaction | null,
+  proof: Omit<PaymentProof, 'signature' | 'decimals'>,
+): VerifiedPayment {
   if (!transaction || transaction.meta?.err) {
     throw new Error('The transaction is missing or failed');
   }
@@ -78,10 +129,13 @@ export function verifyParsedPayment(transaction, proof) {
     );
   }
 
-  return { payerSigned, merchantDelta, feeDelta, payerDelta };
+  return { payerSigned: true, merchantDelta, feeDelta, payerDelta };
 }
 
-export async function verifyDevnetPayment(connection, proof) {
+export async function verifyDevnetPayment(
+  connection: Connection,
+  proof: PaymentProof,
+): Promise<VerifiedPayment> {
   const genesis = await connection.getGenesisHash();
   if (genesis !== DEVNET_GENESIS) {
     throw new Error('Verification requires Solana Devnet');
@@ -98,6 +152,5 @@ export async function verifyDevnetPayment(connection, proof) {
     commitment: 'finalized',
     maxSupportedTransactionVersion: 0,
   });
-  return verifyParsedPayment(transaction, proof);
+  return verifyParsedPayment(transaction as ParsedPaymentTransaction | null, proof);
 }
-

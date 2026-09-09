@@ -3,14 +3,15 @@ import { Connection } from '@solana/web3.js';
 import {
   formatAtomic,
   verifyDevnetPayment,
-} from '../src/payment-proof.mjs';
+  type PaymentProof,
+} from '../src/payment-proof.ts';
 
 const proof = JSON.parse(
   await readFile(
     new URL('../evidence/devnet-transaction.json', import.meta.url),
     'utf8',
   ),
-);
+) as PaymentProof;
 const rpcUrl =
   process.env.SOLANA_DEVNET_RPC_URL ?? 'https://api.devnet.solana.com';
 const connection = new Connection(rpcUrl, 'finalized');
@@ -30,8 +31,7 @@ try {
   process.stdout.write(
     `explorer: https://explorer.solana.com/tx/${proof.signature}?cluster=devnet\n`,
   );
-} catch (error) {
+} catch (error: unknown) {
   process.stderr.write(`${error instanceof Error ? error.stack : error}\n`);
   process.exitCode = 1;
 }
-

@@ -4,30 +4,32 @@ import {
   formatAtomic,
   ownerMintDelta,
   verifyParsedPayment,
-} from '../src/payment-proof.mjs';
+  type ParsedPaymentTransaction,
+  type PaymentProof,
+} from '../src/payment-proof.ts';
 import {
   assertPaymentPlan,
   calculatePaymentSplit,
   createPaymentReference,
-} from '../src/payment-plan.mjs';
+} from '../src/payment-plan.ts';
 import {
   canStartNewAttempt,
   PaymentState,
   transitionPayment,
-} from '../src/payment-lifecycle.mjs';
+} from '../src/payment-lifecycle.ts';
 
-const key = (address, signer = false) => ({
+const key = (address: string, signer = false) => ({
   pubkey: { toBase58: () => address },
   signer,
 });
 
-const balance = (owner, mint, amount) => ({
+const balance = (owner: string, mint: string, amount: number) => ({
   owner,
   mint,
   uiTokenAmount: { amount: String(amount) },
 });
 
-const proof = {
+const proof: Omit<PaymentProof, 'signature' | 'decimals'> = {
   payer: 'payer',
   merchant: 'merchant',
   feeWallet: 'fee',
@@ -37,7 +39,7 @@ const proof = {
   feeAmountAtomic: '30000',
 };
 
-const transaction = {
+const transaction: ParsedPaymentTransaction = {
   meta: {
     err: null,
     preTokenBalances: [balance('payer', 'mint', 20_000_000)],
@@ -75,7 +77,7 @@ test('rejects a mismatched merchant amount', () => {
     ...transaction,
     meta: {
       ...transaction.meta,
-      postTokenBalances: transaction.meta.postTokenBalances.map(item => ({
+      postTokenBalances: transaction.meta!.postTokenBalances!.map(item => ({
         ...item,
         uiTokenAmount: { ...item.uiTokenAmount },
       })),
