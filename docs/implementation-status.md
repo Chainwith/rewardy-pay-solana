@@ -8,9 +8,9 @@
 | Merchant and Rewardy fee split | Working | One transaction; exact deltas verified |
 | Existing transaction replay | Working | `npm run proof:verify` |
 | Rewardy payment memo | Working in live demo | `rewardy-pay-demo:<reference>` |
-| Direct SOL/SPL wallet payment | Integrated in Rewardy Wallet | Product repository tests |
-| Payment reconciliation | Integrated in Rewardy backend | Product repository tests and Devnet evidence |
-| Receipt, history and refund evidence | Integrated product flows | Product repository tests |
+| Direct SOL/SPL wallet payment | Rewardy product surface | Product demo and pitch deck |
+| Payment reconciliation | Rewardy product surface | Product demo and pitch deck |
+| Receipt, history and refund evidence | Rewardy product surface | Product demo and pitch deck |
 
 ## Designed or roadmap
 
@@ -27,3 +27,6 @@
 The executable proof, payment-plan validation and lifecycle controls in this
 repository are written in TypeScript. `npm run typecheck` runs strict type
 checking before the test suite.
+
+The public evaluator repository is the source of truth for reproducible Solana
+claims. Product-surface claims require the submitted Rewardy demo.

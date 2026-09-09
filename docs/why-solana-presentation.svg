@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Why Solana presentation for Rewardy Pay</title>
+  <desc id="desc">Rewardy Wallet connects a merchant payment request to atomic Solana settlement, independent verification, receipts and rewards. Direct Solana payments are working. Ecosystem integrations are planned.</desc>
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4edfd0"/>
+      <stop offset="1" stop-color="#6b83ee"/>
+    </linearGradient>
+    <linearGradient id="walletGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8cbcf8"/>
+      <stop offset="1" stop-color="#60ead4"/>
+    </linearGradient>
+    <linearGradient id="solanaGradient" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#9945ff"/>
+      <stop offset="0.52" stop-color="#5f7bed"/>
+      <stop offset="1" stop-color="#14f195"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#4c5870" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0 0L12 6L0 12Z" fill="#7591ed"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#f5f7fb"/>
+  <rect width="1600" height="7" fill="url(#brand)"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <g transform="translate(72 42)">
+      <rect width="46" height="46" rx="13" fill="url(#walletGradient)"/>
+      <path d="M12 17c3-6 19-6 22 0v12c-3 6-19 6-22 0Z" fill="#ffffff"/>
+      <circle cx="18" cy="23" r="2" fill="#30394b"/>
+      <circle cx="28" cy="23" r="2" fill="#30394b"/>
+      <text x="62" y="31" fill="#20242d" font-size="26" font-weight="700">Rewardy PAY</text>
+    </g>
+    <text x="72" y="156" fill="#1c2028" font-size="52" font-weight="700">Why Solana</text>
+    <text x="72" y="201" fill="#606a7c" font-size="23">The settlement layer that turns wallet assets into verifiable local payments.</text>
+    <g transform="translate(72 256)">
+      <text x="0" y="0" fill="#637fe0" font-size="14" font-weight="700">WORKING PAYMENT PATH</text>
+      <g transform="translate(0 36)" filter="url(#shadow)">
+        <rect width="300" height="265" rx="28" fill="#ffffff" stroke="#dbe3f2" stroke-width="2"/>
+        <rect x="28" y="28" width="58" height="58" rx="17" fill="url(#walletGradient)"/>
+        <path d="M39 48c3-5 19-5 22 0v11c-3 5-19 5-22 0Z" fill="#ffffff"/>
+        <circle cx="45" cy="53" r="1.7" fill="#334052"/>
+        <circle cx="55" cy="53" r="1.7" fill="#334052"/>
+        <text x="105" y="51" fill="#20252d" font-size="23" font-weight="700">Rewardy Wallet</text>
+        <text x="28" y="118" fill="#647084" font-size="17">Choose a supported asset</text>
+        <text x="28" y="149" fill="#647084" font-size="17">Review merchant and amount</text>
+        <text x="28" y="180" fill="#647084" font-size="17">Approve with payer signature</text>
+        <rect x="28" y="205" width="244" height="38" rx="12" fill="#e9faf6"/>
+        <text x="150" y="230" text-anchor="middle" fill="#168f7f" font-size="15" font-weight="700">Customer controls funds</text>
+      </g>
+      <line x1="316" y1="168" x2="370" y2="168" stroke="#7591ed" stroke-width="5" marker-end="url(#arrowBlue)"/>
+      <g transform="translate(390 36)" filter="url(#shadow)">
+        <rect width="300" height="265" rx="28" fill="#ffffff" stroke="#dbe3f2" stroke-width="2"/>
+        <rect x="28" y="28" width="58" height="58" rx="17" fill="#eef2fd"/>
+        <path d="M44 46h26v22H44M40 50v-8h8M74 50v-8h-8M40 64v9h8M74 64v9h-8" fill="none" stroke="#4b5565" stroke-width="3" stroke-linecap="round"/>
+        <text x="105" y="51" fill="#20252d" font-size="23" font-weight="700">Payment intent</text>
+        <text x="28" y="118" fill="#647084" font-size="17">Merchant amount</text>
+        <text x="28" y="149" fill="#647084" font-size="17">Approved mint and recipients</text>
+        <text x="28" y="180" fill="#647084" font-size="17">Rewardy order reference</text>
+        <rect x="28" y="205" width="244" height="38" rx="12" fill="#f1f4fd"/>
+        <text x="150" y="230" text-anchor="middle" fill="#5e79da" font-size="15" font-weight="700">Phone POS or printed QR</text>
+      </g>
+      <line x1="706" y1="168" x2="760" y2="168" stroke="#7591ed" stroke-width="5" marker-end="url(#arrowBlue)"/>
+      <g transform="translate(780 18)" filter="url(#shadow)">
+        <rect width="365" height="301" rx="30" fill="#637fe1"/>
+        <circle cx="54" cy="55" r="27" fill="#11141c"/>
+        <path d="M40 45h29l-6 7H34Zm-6 10h29l6 7H40Zm6 10h29l-6 7H34Z" fill="url(#solanaGradient)"/>
+        <text x="96" y="50" fill="#dfe7ff" font-size="14" font-weight="700">SOLANA TRANSACTION</text>
+        <text x="30" y="109" fill="#ffffff" font-size="28" font-weight="700">Atomic settlement</text>
+        <rect x="30" y="132" width="305" height="46" rx="14" fill="#ffffff" fill-opacity="0.14"/>
+        <text x="48" y="161" fill="#ffffff" font-size="16">Memo: order reference</text>
+        <rect x="30" y="190" width="145" height="77" rx="16" fill="#ffffff" fill-opacity="0.14"/>
+        <text x="102" y="219" text-anchor="middle" fill="#dfe7ff" font-size="12" font-weight="700">MERCHANT</text>
+        <text x="102" y="250" text-anchor="middle" fill="#ffffff" font-size="28" font-weight="700">9.97</text>
+        <rect x="190" y="190" width="145" height="77" rx="16" fill="#ffffff" fill-opacity="0.14"/>
+        <text x="262" y="219" text-anchor="middle" fill="#dfe7ff" font-size="12" font-weight="700">REWARDY FEE</text>
+        <text x="262" y="250" text-anchor="middle" fill="#ffffff" font-size="28" font-weight="700">0.03</text>
+      </g>
+      <line x1="1161" y1="168" x2="1215" y2="168" stroke="#7591ed" stroke-width="5" marker-end="url(#arrowBlue)"/>
+      <g transform="translate(1235 36)" filter="url(#shadow)">
+        <rect width="293" height="265" rx="28" fill="#ffffff" stroke="#dbe3f2" stroke-width="2"/>
+        <circle cx="57" cy="57" r="29" fill="#7da2f2"/>
+        <path d="M44 57l9 9 18-21" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="105" y="51" fill="#20252d" font-size="23" font-weight="700">Verify result</text>
+        <text x="28" y="118" fill="#647084" font-size="17">Signer, mint and recipients</text>
+        <text x="28" y="149" fill="#647084" font-size="17">Exact deltas and finality</text>
+        <text x="28" y="180" fill="#647084" font-size="17">Receipt and reward eligibility</text>
+        <rect x="28" y="205" width="237" height="38" rx="12" fill="#fff6dd"/>
+        <text x="146" y="230" text-anchor="middle" fill="#a77500" font-size="15" font-weight="700">One settlement record</text>
+      </g>
+    </g>
+    <g transform="translate(72 616)">
+      <text x="0" y="0" fill="#788397" font-size="14" font-weight="700">WHY THIS CHAIN FITS THE PRODUCT</text>
+      <g transform="translate(0 24)">
+        <rect width="347" height="82" rx="22" fill="#ffffff" stroke="#dbe3f2" stroke-width="2"/>
+        <text x="24" y="34" fill="#637fe0" font-size="18" font-weight="700">Atomic commercial payment</text>
+        <text x="24" y="59" fill="#707b8d" font-size="15">Merchant amount and fee succeed together.</text>
+      </g>
+      <g transform="translate(367 24)">
+        <rect width="347" height="82" rx="22" fill="#ffffff" stroke="#dbe3f2" stroke-width="2"/>
+        <text x="24" y="34" fill="#18a894" font-size="18" font-weight="700">Wallet-native authorization</text>
+        <text x="24" y="59" fill="#707b8d" font-size="15">The customer signs without a card terminal.</text>
+      </g>
+      <g transform="translate(734 24)">
+        <rect width="347" height="82" rx="22" fill="#ffffff" stroke="#dbe3f2" stroke-width="2"/>
+        <text x="24" y="34" fill="#7656d7" font-size="18" font-weight="700">Public settlement proof</text>
+        <text x="24" y="59" fill="#707b8d" font-size="15">The backend verifies before marking paid.</text>
+      </g>
+      <g transform="translate(1101 24)">
+        <rect width="427" height="82" rx="22" fill="#ffffff" stroke="#dbe3f2" stroke-width="2"/>
+        <text x="24" y="34" fill="#c18a07" font-size="18" font-weight="700">Payment-grade economics</text>
+        <text x="24" y="59" fill="#707b8d" font-size="15">Low fees keep small payments and rewards viable.</text>
+      </g>
+    </g>
+    <g transform="translate(72 764)">
+      <text x="0" y="0" fill="#788397" font-size="14" font-weight="700">PLANNED ECOSYSTEM EXTENSIONS</text>
+      <rect x="0" y="22" width="1456" height="78" rx="24" fill="#ffffff" stroke="#cfdaf5" stroke-width="2"/>
+      <text x="28" y="56" fill="#20252d" font-size="16" font-weight="700">Solana Pay</text>
+      <text x="28" y="80" fill="#778195" font-size="14">request standard</text>
+      <line x1="194" y1="40" x2="194" y2="82" stroke="#e0e6f2" stroke-width="2"/>
+      <text x="220" y="56" fill="#20252d" font-size="16" font-weight="700">Jupiter</text>
+      <text x="220" y="80" fill="#778195" font-size="14">asset routing</text>
+      <line x1="380" y1="40" x2="380" y2="82" stroke="#e0e6f2" stroke-width="2"/>
+      <text x="406" y="56" fill="#20252d" font-size="16" font-weight="700">Kora</text>
+      <text x="406" y="80" fill="#778195" font-size="14">fee abstraction</text>
+      <line x1="566" y1="40" x2="566" y2="82" stroke="#e0e6f2" stroke-width="2"/>
+      <text x="592" y="56" fill="#20252d" font-size="16" font-weight="700">Helius</text>
+      <text x="592" y="80" fill="#778195" font-size="14">verification and indexing</text>
+      <line x1="808" y1="40" x2="808" y2="82" stroke="#e0e6f2" stroke-width="2"/>
+      <text x="834" y="56" fill="#20252d" font-size="16" font-weight="700">Mayan + Wormhole</text>
+      <text x="834" y="80" fill="#778195" font-size="14">cross-chain route</text>
+      <line x1="1069" y1="40" x2="1069" y2="82" stroke="#e0e6f2" stroke-width="2"/>
+      <text x="1095" y="56" fill="#20252d" font-size="16" font-weight="700">SNS + Metaplex</text>
+      <text x="1095" y="80" fill="#778195" font-size="14">identity, receipts and loyalty</text>
+      <rect x="1340" y="40" width="88" height="34" rx="17" fill="#f0edff"/>
+      <text x="1384" y="62" text-anchor="middle" fill="#7656d7" font-size="12" font-weight="700">PLANNED</text>
+    </g>
+    <text x="72" y="884" fill="#8993a5" font-size="14">Working proof: direct SPL settlement and verification on Devnet. Ecosystem extensions depend on implementation, partner availability and compliance.</text>
+  </g>
+</svg>
