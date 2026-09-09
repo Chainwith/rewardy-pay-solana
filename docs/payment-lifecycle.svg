@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="700" viewBox="0 0 1600 700">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8faff"/>
+      <stop offset="1" stop-color="#f2fffc"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7192f1"/>
+      <stop offset="1" stop-color="#58dcca"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#53627c" flood-opacity=".12"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0 0L12 6L0 12Z" fill="#7c98ed"/>
+    </marker>
+    <marker id="mintArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0 0L12 6L0 12Z" fill="#52cdbb"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="700" fill="url(#bg)"/>
+  <rect width="1600" height="6" fill="url(#brand)"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="80" y="84" fill="#171c26" font-size="40" font-weight="700">A recoverable payment lifecycle</text>
+    <text x="80" y="124" fill="#707b8e" font-size="20">Client feedback never replaces independent on-chain verification.</text>
+
+    <g transform="translate(70 225)" filter="url(#shadow)">
+      <rect width="230" height="150" rx="26" fill="#fff" stroke="#dce4f4" stroke-width="2"/>
+      <circle cx="36" cy="36" r="18" fill="#e8edff"/>
+      <text x="36" y="42" text-anchor="middle" fill="#5775d6" font-size="15" font-weight="700">01</text>
+      <text x="28" y="86" fill="#222936" font-size="24" font-weight="700">WAITING</text>
+      <text x="28" y="119" fill="#7b8597" font-size="16">QR is active</text>
+    </g>
+    <line x1="315" y1="300" x2="385" y2="300" stroke="#7c98ed" stroke-width="5" marker-end="url(#arrow)"/>
+
+    <g transform="translate(405 225)" filter="url(#shadow)">
+      <rect width="230" height="150" rx="26" fill="#fff" stroke="#dce4f4" stroke-width="2"/>
+      <circle cx="36" cy="36" r="18" fill="#e8edff"/>
+      <text x="36" y="42" text-anchor="middle" fill="#5775d6" font-size="15" font-weight="700">02</text>
+      <text x="28" y="86" fill="#222936" font-size="24" font-weight="700">SIGNING</text>
+      <text x="28" y="119" fill="#7b8597" font-size="16">Customer approves</text>
+    </g>
+    <line x1="650" y1="300" x2="720" y2="300" stroke="#7c98ed" stroke-width="5" marker-end="url(#arrow)"/>
+
+    <g transform="translate(740 225)" filter="url(#shadow)">
+      <rect width="230" height="150" rx="26" fill="#fff" stroke="#dce4f4" stroke-width="2"/>
+      <circle cx="36" cy="36" r="18" fill="#e8edff"/>
+      <text x="36" y="42" text-anchor="middle" fill="#5775d6" font-size="15" font-weight="700">03</text>
+      <text x="28" y="86" fill="#222936" font-size="24" font-weight="700">SUBMITTED</text>
+      <text x="28" y="119" fill="#7b8597" font-size="16">Signature recorded</text>
+    </g>
+    <line x1="985" y1="300" x2="1055" y2="300" stroke="#7c98ed" stroke-width="5" marker-end="url(#arrow)"/>
+
+    <g transform="translate(1075 200)" filter="url(#shadow)">
+      <rect width="450" height="200" rx="30" fill="#6687e9"/>
+      <circle cx="52" cy="52" r="22" fill="#7e99ef"/>
+      <path d="M42 52l7 7 14-17" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="86" y="61" fill="#dfe8ff" font-size="16" font-weight="700">04 · SOLANA VERIFIED</text>
+      <text x="36" y="116" fill="#fff" font-size="31" font-weight="700">CONFIRMED</text>
+      <text x="36" y="154" fill="#e2e9ff" font-size="17">Session paid · receipt available</text>
+      <text x="36" y="179" fill="#e2e9ff" font-size="17">Reward becomes eligible</text>
+    </g>
+
+    <path d="M855 390v83h-208" fill="none" stroke="#52cdbb" stroke-width="4" marker-end="url(#mintArrow)"/>
+    <g transform="translate(295 455)" filter="url(#shadow)">
+      <rect width="340" height="140" rx="24" fill="#fff" stroke="#bfeee5" stroke-width="2"/>
+      <text x="28" y="49" fill="#258d7d" font-size="16" font-weight="700">CONFIRMATION UNKNOWN</text>
+      <text x="28" y="84" fill="#27303c" font-size="20" font-weight="700">Recover by signature</text>
+      <text x="28" y="114" fill="#748095" font-size="16">Do not pay again blindly</text>
+    </g>
+    <path d="M635 525h670v-110" fill="none" stroke="#52cdbb" stroke-width="4" marker-end="url(#mintArrow)"/>
+
+    <g transform="translate(80 640)">
+      <circle cx="8" cy="-5" r="7" fill="#52cdbb"/>
+      <text x="27" y="1" fill="#758095" font-size="16">Recovery preserves payment safety when a client closes or loses connectivity after broadcast.</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+{
+  "name": "rewardy-pay-solana",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Executable Solana payment and settlement proof for Rewardy Pay.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "proof:verify": "node scripts/verify-existing-transaction.mjs",
+    "demo:devnet": "node scripts/execute-devnet-payment.mjs",
+    "demo:address": "node scripts/execute-devnet-payment.mjs --print-address",
+    "check": "npm test"
+  },
+  "dependencies": {
+    "@solana/spl-token": "0.4.9",
+    "@solana/web3.js": "1.95.3"
+  }
+}

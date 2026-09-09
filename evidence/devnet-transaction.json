@@ -1,0 +1,14 @@
+{
+  "cluster": "devnet",
+  "signature": "3VgumguvQvi3Zf9kZ3QzqAuhmmyfqyisHQfWYSoaiYXnytpAqP1AGLnvhTw2VSrQYX2PaVGAgaMA2FAR17sjdHSV",
+  "mint": "C6tTYq5yAaCJxEAphfGUkjDYdQr2t9gBDXLySe8KePAw",
+  "decimals": 6,
+  "payer": "8icWLUP1az7h6eVCnBnRPwBATY4UEn91291BTdCKbTLE",
+  "merchant": "6ngKqUfAyrF838rhSci3MS2ysmcGncFMbk4RapsukLK1",
+  "feeWallet": "GrxJPa6yCBc1DNooAmXiFs26DxVCEPHGN4cAZstNDckD",
+  "paymentAmountAtomic": "10000000",
+  "merchantAmountAtomic": "9970000",
+  "feeAmountAtomic": "30000",
+  "memo": null,
+  "note": "Recorded proof validates the atomic merchant and fee split. The live demo command additionally includes a Rewardy payment memo."
+}

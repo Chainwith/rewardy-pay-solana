@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="640" viewBox="0 0 1600 640">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f9ff"/>
+      <stop offset="1" stop-color="#f0fffb"/>
+    </linearGradient>
+    <linearGradient id="solana" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#9945ff"/>
+      <stop offset=".5" stop-color="#4e8df7"/>
+      <stop offset="1" stop-color="#14f195"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#576681" flood-opacity=".13"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0 0L12 6L0 12Z" fill="#7796ee"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="640" fill="url(#background)"/>
+  <rect width="1600" height="6" fill="url(#solana)"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="78" y="82" fill="#151a24" font-size="40" font-weight="700">One payment. One atomic Solana transaction.</text>
+    <text x="78" y="122" fill="#6e788c" font-size="20">Recorded Devnet proof · exact token deltas independently verified</text>
+
+    <g transform="translate(80 205)" filter="url(#shadow)">
+      <rect width="300" height="250" rx="28" fill="#fff" stroke="#dfe6f5" stroke-width="2"/>
+      <text x="34" y="46" fill="#7a8498" font-size="16" font-weight="700">CUSTOMER WALLET</text>
+      <text x="34" y="106" fill="#202633" font-size="23">Payment amount</text>
+      <text x="34" y="157" fill="#3157ca" font-size="48" font-weight="700">10.00</text>
+      <text x="34" y="204" fill="#758095" font-size="17">Payer signature required</text>
+    </g>
+
+    <line x1="400" y1="330" x2="500" y2="330" stroke="#7796ee" stroke-width="5" marker-end="url(#arrow)"/>
+
+    <g transform="translate(520 175)" filter="url(#shadow)">
+      <rect width="400" height="310" rx="32" fill="#6687e9"/>
+      <text x="200" y="48" text-anchor="middle" fill="#dfe8ff" font-size="17" font-weight="700">SOLANA DEVNET</text>
+      <text x="200" y="92" text-anchor="middle" fill="#fff" font-size="30" font-weight="700">Atomic instruction set</text>
+      <rect x="38" y="120" width="324" height="48" rx="15" fill="#ffffff" fill-opacity=".15"/>
+      <text x="200" y="151" text-anchor="middle" fill="#fff" font-size="17">01 · Payment reference</text>
+      <rect x="38" y="181" width="324" height="48" rx="15" fill="#ffffff" fill-opacity=".15"/>
+      <text x="200" y="212" text-anchor="middle" fill="#fff" font-size="17">02 · Merchant transfer</text>
+      <rect x="38" y="242" width="324" height="48" rx="15" fill="#ffffff" fill-opacity=".15"/>
+      <text x="200" y="273" text-anchor="middle" fill="#fff" font-size="17">03 · Rewardy fee transfer</text>
+    </g>
+
+    <line x1="940" y1="330" x2="1040" y2="330" stroke="#7796ee" stroke-width="5" marker-end="url(#arrow)"/>
+
+    <g transform="translate(1060 205)" filter="url(#shadow)">
+      <rect width="460" height="250" rx="28" fill="#fff" stroke="#dfe6f5" stroke-width="2"/>
+      <text x="34" y="46" fill="#7a8498" font-size="16" font-weight="700">FINALIZED RESULT</text>
+      <rect x="34" y="72" width="188" height="106" rx="20" fill="#eefbf7"/>
+      <text x="128" y="104" text-anchor="middle" fill="#278f7d" font-size="14" font-weight="700">MERCHANT</text>
+      <text x="128" y="148" text-anchor="middle" fill="#176c60" font-size="35" font-weight="700">+9.97</text>
+      <rect x="238" y="72" width="188" height="106" rx="20" fill="#f0f3ff"/>
+      <text x="332" y="104" text-anchor="middle" fill="#5874cf" font-size="14" font-weight="700">REWARDY FEE</text>
+      <text x="332" y="148" text-anchor="middle" fill="#3157ca" font-size="35" font-weight="700">+0.03</text>
+      <circle cx="50" cy="211" r="14" fill="#59d2bf"/>
+      <path d="M43 211l5 5 9-11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="76" y="217" fill="#667186" font-size="17">Signer, mint, recipients and finality verified</text>
+    </g>
+
+    <rect x="80" y="545" width="1440" height="1" fill="#dfe5f1"/>
+    <text x="80" y="582" fill="#8a94a7" font-size="16">Test SPL token · Transaction fee 0.000005 SOL · Mainnet settlement is not claimed</text>
+  </g>
+</svg>
